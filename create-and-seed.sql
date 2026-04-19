@@ -42,11 +42,12 @@ CREATE DATABASE books_db;
 -- ============================================================
 CREATE TABLE books (
     book_id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL UNIQUE,
     author TEXT NOT NULL,
     genre TEXT NOT NULL, 
     price NUMERIC NOT NULL,
     pages INT NOT NULL,
+    ISBN_number INT UNIQUE,
     available BOOLEAN DEFAULT TRUE
 );
 

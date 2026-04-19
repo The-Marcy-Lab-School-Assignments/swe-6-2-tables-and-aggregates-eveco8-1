@@ -32,15 +32,38 @@
 -- ============================================================
 -- Step 1: Create the database
 -- ============================================================
-
+DROP DATABASE IF EXISTS books_db;
+CREATE DATABASE books_db;
+/c books_db
 
 
 -- ============================================================
 -- Step 2: Create the table
 -- ============================================================
-
+CREATE TABLE books (
+    book_id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL, 
+    price NUMERIC NOT NULL,
+    pages INT NOT NULL,
+    ISBN_number INT UNIQUE,
+    available BOOLEAN DEFAULT TRUE
+);
 
 
 -- ============================================================
 -- Step 3: Insert seed data (at least 8 rows)
 -- ============================================================
+---------+------------------------+-----------------------+-------+-------+----------
+
+INSERT INTO books (name, author, genre, price, pages) VALUES 
+    ('The Giving Tree', 'Shel Silverstein', 'Picture Book', 9.99, 64),
+    ('Green Eggs and Ham', 'Dr.Seuss', 'Picture Book', 9.99, 20),
+    ('The Lorax', 'Dr.Seuss', 'Picture Book', 9.99, 64),
+    ('The Great Gatspy', 'F. Scott Fitzgerald', 'Literary Fiction', 14.99, 218),
+    ('To Kill a Mocking Bird', 'Harper Lee', 'Southern Gothic', 14.99, 281),
+    ('1984', 'George Orwell','Dystopian', 14.99, 328),
+    ('One Hundred Years of Solitude', 'Gabriel Garcia Marquez', 'Magical Realism', 19.99, 448),
+    ('The Stranger', 'Albert Camus', 'Philosophical Fiction',  19.99, 144);
+
